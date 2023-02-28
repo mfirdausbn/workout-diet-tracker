@@ -6,6 +6,7 @@ const connectDB = require("./db/db");
 
 // import the routes from the different routers
 const User = require("./router/users");
+const Event = require("./router/events");
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 connectDB(process.env.MONGODB_URI);
 
 app.use("/admin", User);
+app.use("/event", Event)
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {

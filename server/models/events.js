@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const EventsSchema = new mongoose.Schema(
   {
-    date: { type: Date, required: true },
+    week: {type: String, required: true},
+    day: { type: String, required: true },
     workout: { type: String },
     woDetails: { type: String },
     feeling: { type: String, required: true },
@@ -13,7 +14,7 @@ const EventsSchema = new mongoose.Schema(
     },
     points: { type: Number },
   },
-  { collection: "event" }
+  { collection: "event", timestamps: true }
 );
 
 const Events = mongoose.model("Events", EventsSchema);
