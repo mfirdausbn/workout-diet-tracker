@@ -6,6 +6,15 @@ const userSchema = new mongoose.Schema(
   {
     username: { type: String, required: true },
     hash: { type: String, required: true },
+
+    height: { type: String },
+    startWeight: { type: String },
+    startBodyFat: { type: String },
+    startMuscleMass: { type: String },
+    endWeight: { type: String },
+    endBodyFat: { type: String },
+    endMuscleMass: { type: String },
+
   },
   { collection: "users", timestamps: true }
 );

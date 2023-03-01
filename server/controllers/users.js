@@ -19,6 +19,11 @@ const createUser = async (req, res) => {
     const createUser = await Users.create({
       username: req.body.username,
       hash,
+      height: req.body.height,
+      startWeight: req.body.startWeight,
+      startBodyFat: req.body.startBodyFat,
+      startMuscleMass: req.body.startMuscleMass,
+
     });
 
     console.log("Created User: " + createUser);
@@ -74,7 +79,7 @@ const login = async (req, res) => {
 // 3. Function to display all users
 const getUsers = async (req, res) => {
   try {
-    const allUsers = await Users.find().select("username");
+    const allUsers = await Users.find();
 
     // check if there are any users in the first place
 
@@ -85,7 +90,25 @@ const getUsers = async (req, res) => {
   }
 };
 
-// 4. *todo Function to logout 
+// 4. Function to update user info
+const updateUser = async (req, res) => {
+  try {
+    const user = await Users.findById(req.body.id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    } else {
+      user.height = req.body.height;
+      user.startWeight = req.body.startWeight;
+      user.startBodyFat = req.body.startBodyFat;
+      user.startMuscleMass = req.body.startMuscleMass;      
+    }
+    const updatedUser= await user.save();
+    res.json({ message: "User updated successfully", event: updatedUser });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
 
-module.exports = { createUser, login, getUsers };
+module.exports = { createUser, login, getUsers, updateUser };
+

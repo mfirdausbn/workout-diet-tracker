@@ -1,40 +1,37 @@
 const Events = require("../models/events"); // import schema from models
 const fs = require("fs");
 
-
-//create functions here
-
+//functions here
 
 //function to create event
 const createEvent = async (req, res) => {
-    try {
-      const newEvent = new Events({
-        week: req.body.week,
-        day: req.body.day,
-        workout: req.body.workout,
-        woDetails: req.body.woDetails,
-        feeling: req.body.feeling,
-        food: req.body.food,
-        // bodyimage: {
-        //   data: fs.readFileSync("uploads/" + req.file.filename),
-        //   contentType: "image/jpg",
-        // },
-        points: req.body.points,
-        
-        
-      });
-  
-      const savedEvent = await newEvent.save();
-      // console.log("image saved");
-      res.json({
-        message: "Event created successfully",
-        createdEvent: savedEvent,
-      });
-    } catch (error) {
-      console.log("PUT /events/create", error);
-      res.status(400).json({ status: "error", message: error.message });
-    }
-  };
+  try {
+    const newEvent = new Events({
+      week: req.body.week,
+      day: req.body.day,
+      workout: req.body.workout,
+      woDetails: req.body.woDetails,
+      feeling: req.body.feeling,
+      food: req.body.food,
+      // bodyimage: {
+      //   data: fs.readFileSync("uploads/" + req.file.filename),
+      //   contentType: "image/jpg",
+      // },
+      points: req.body.points,
+    });
+
+    const savedEvent = await newEvent.save();
+    // console.log("image saved");
+    res.json({
+      message: "Event created successfully",
+      createdEvent: savedEvent,
+    });
+  } catch (error) {
+    console.log("PUT /events/create", error);
+    res.status(400).json({ status: "error", message: error.message });
+  }
+};
+
 //function for reading all events
 const getAllEvents = async (req, res) => {
   try {
@@ -44,6 +41,31 @@ const getAllEvents = async (req, res) => {
     res.json(error);
   }
 };
+
+//function for reading events by day and week
+const getEventByDayAndWeek = async (req, res) => {
+  try {
+    const event = await Events.find({
+      week: req.body.week,
+      day: req.body.day,
+    });
+    res.json({ event });
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+//function for reading events by week
+const getEventsByWeek = async (req, res) => {
+  try {
+    const week = req.body.week;
+    const events = await Events.find({ week });
+    res.json({ events });
+  } catch (error) {
+    res.json(error);
+  }
+};
+
 //function for updating event
 const updateEvent = async (req, res) => {
   try {
@@ -62,7 +84,7 @@ const updateEvent = async (req, res) => {
       //   data: fs.readFileSync("uploads/" + req.file.filename),
       //   contentType: "image/jpg",
       // };
-      
+
       event.points = req.body.points;
     }
     const updatedEvent = await event.save();
@@ -71,6 +93,7 @@ const updateEvent = async (req, res) => {
     console.log(error.message);
   }
 };
+
 //function for deleting event
 const deleteEvent = async (req, res) => {
   try {
@@ -85,13 +108,14 @@ const deleteEvent = async (req, res) => {
     res.json(error);
   }
 };
-//function to read first and last image 
-
+//function to read first and last image
 
 // To export the functions to router
 module.exports = {
-    createEvent,
-    getAllEvents,
-    updateEvent,
-    deleteEvent,
+  createEvent,
+  getAllEvents,
+  updateEvent,
+  deleteEvent,
+  getEventsByWeek,
+  getEventByDayAndWeek,
 };
