@@ -8,7 +8,7 @@ const EntriesSchema = new mongoose.Schema(
     woDetails: { type: String },
     feeling: { type: String, required: true },
     food: { type: String },
-    bodyimage: {
+    img: {
       data: Buffer,
       contentType: String,
     },

@@ -13,15 +13,15 @@ const createEntry = async (req, res) => {
       woDetails: req.body.woDetails,
       feeling: req.body.feeling,
       food: req.body.food,
-      // bodyimage: {
-      //   data: fs.readFileSync("uploads/" + req.file.filename),
-      //   contentType: "image/jpg",
-      // },
+      img: {
+        data: fs.readFileSync("uploads/" + req.file.filename),
+        contentType: "image/jpg",
+      },
       points: req.body.points,
     });
 
     const savedEntry = await newEntry.save();
-    // console.log("image saved");
+    console.log("image saved");
     res.json({
       message: "Entry created successfully",
       createdEntry: savedEntry,

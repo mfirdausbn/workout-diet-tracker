@@ -14,8 +14,25 @@ const {
   getEntryByDayAndWeek,
 } = require("../controllers/entries");
 
+////////////////////////////
+// Handling Image Events
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  // declare the destination for the file in server side
+  destination: (req, file, cb) => {
+    cb(null, "uploads");
+  },
+  // file name saved as the original file name when uploaded
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+const upload = multer({ storage: storage });
+////////////////////////////////////////////////////////////////////////
+
 // Create entry
-router.put("/create", createEntry);
+router.put("/create", upload.single("img"), createEntry);
 
 // READ show all entries
 router.get("/showall", getAllEntries);
@@ -27,11 +44,7 @@ router.post("/showbydayandweek", getEntryByDayAndWeek);
 router.get("/showbyweek", getEntriesByWeek);
 
 // UPDATE entry by ID
-router.patch(
-  "/update",
-  //  upload.single("entryImg"),
-  updateEntry
-);
+router.patch("/update", upload.single("img"), updateEntry);
 
 // DELETE entry by ID
 router.delete("/delete", deleteEntry);

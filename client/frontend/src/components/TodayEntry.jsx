@@ -29,7 +29,7 @@ const TodayEntry = () => {
     formData.append("workout", entry.workout);
     formData.append("feeling", entry.feeling);
     formData.append("woDetails", entry.woDetails);
-    // formData.append("entryImg", file);
+    formData.append("eventImg", file);
     formData.append("food", entry.food);
    
 
@@ -45,6 +45,10 @@ const TodayEntry = () => {
           feeling: entry.feeling,
           woDetails: entry.woDetails,
           food: entry.food,
+          bodyimage: {
+            data: fs.readFileSync("uploads/" + req.file.filename),
+            contentType: "image/jpg",
+          },
         },
 
         {
