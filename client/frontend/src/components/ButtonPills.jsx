@@ -1,12 +1,15 @@
 import React from "react";
 import { Button } from "flowbite-react";
 
-const ButtonPills = () => {
+const ButtonPills = (setWeek) => {
+  
+  
   return (
+    
     <div>
       <div className="flex flex-wrap gap-2">
         <div>
-          <Button color="gray" pill={true}>
+          <Button color="gray" pill={true} onClick={() => {setWeek(1)}}>
             Week 1
           </Button>
         </div>
