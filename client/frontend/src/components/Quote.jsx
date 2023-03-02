@@ -12,7 +12,7 @@ const Quote = () => {
         "The hard days are the best because that's when champions are made, so if you push through, you can push through anything”.
         </p>
         <Button color="success">
-          Read more
+          More Quotes
           <svg
             className="ml-2 -mr-1 h-4 w-4"
             fill="currentColor"

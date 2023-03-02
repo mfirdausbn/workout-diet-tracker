@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const EventsSchema = new mongoose.Schema(
+const EntriesSchema = new mongoose.Schema(
   {
-    week: {type: String, required: true},
-    day: { type: String, required: true },
+    week: {type: String},
+    day: { type: String },
     workout: { type: String },
     woDetails: { type: String },
     feeling: { type: String, required: true },
@@ -14,9 +14,9 @@ const EventsSchema = new mongoose.Schema(
     },
     points: { type: Number },
   },
-  { collection: "event", timestamps: true }
+  { collection: "entry", timestamps: true }
 );
 
-const Events = mongoose.model("Events", EventsSchema);
+const Entries = mongoose.model("Entries", EntriesSchema);
 
-module.exports = Events;
+module.exports = Entries;
