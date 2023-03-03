@@ -3,6 +3,8 @@ import { Card, Label, Button } from "flowbite-react";
 import axios from "axios";
 
 const TodayEntry = () => {
+  const [file, setFile] = useState(null);
+
   const [entry, setEntry] = useState({
     week: "",
     day: "",
@@ -29,9 +31,8 @@ const TodayEntry = () => {
     formData.append("workout", entry.workout);
     formData.append("feeling", entry.feeling);
     formData.append("woDetails", entry.woDetails);
-    formData.append("eventImg", file);
+    // formData.append("entryImg", file);
     formData.append("food", entry.food);
-   
 
     // pass the form data object to the server endpoint
     try {
@@ -45,16 +46,16 @@ const TodayEntry = () => {
           feeling: entry.feeling,
           woDetails: entry.woDetails,
           food: entry.food,
-          bodyimage: {
-            data: fs.readFileSync("uploads/" + req.file.filename),
-            contentType: "image/jpg",
-          },
+          // img: {
+          //   data: fs.readFileSync("uploads/" + req.file.filename),
+          //   contentType: "image/jpg",
+          // },
         },
 
         {
           headers: {
-            // "Content-Type": "multipart/form-data",
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+            // "Content-Type": "application/json",
 
             // Authorization: `Bearer ${ctx.ACCESS_TOKEN}`,
           },
@@ -207,7 +208,9 @@ const TodayEntry = () => {
               <input
                 className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-200 dark:border-green-600 dark:placeholder-green-400"
                 id="file_input"
+                name="img"
                 type="file"
+                onChange={(e) => setFile(e.target.files[0])}
               ></input>
             </div>
           </div>

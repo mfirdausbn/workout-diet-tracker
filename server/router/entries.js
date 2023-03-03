@@ -32,7 +32,9 @@ const upload = multer({ storage: storage });
 ////////////////////////////////////////////////////////////////////////
 
 // Create entry
-router.put("/create", upload.single("img"), createEntry);
+router.put("/create",
+ upload.single("entryImg"), 
+ createEntry);
 
 // READ show all entries
 router.get("/showall", getAllEntries);

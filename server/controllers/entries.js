@@ -4,6 +4,7 @@ const fs = require("fs");
 //functions here
 
 //function to create event
+
 const createEntry = async (req, res) => {
   try {
     const newEntry = new Entries({
@@ -13,11 +14,10 @@ const createEntry = async (req, res) => {
       woDetails: req.body.woDetails,
       feeling: req.body.feeling,
       food: req.body.food,
-      img: {
-        data: fs.readFileSync("uploads/" + req.file.filename),
-        contentType: "image/jpg",
-      },
-      points: req.body.points,
+      // img: {
+      //   data: fs.readFileSync("uploads/" + req.file.filename),
+      //   contentType: "image/jpg",
+      // },
     });
 
     const savedEntry = await newEntry.save();

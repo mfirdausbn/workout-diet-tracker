@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const EntriesSchema = new mongoose.Schema(
   {
-    week: {type: String},
+    week: { type: String },
     day: { type: String },
     workout: { type: String },
-    woDetails: { type: String },
+    woDetails: { type: String},
     feeling: { type: String, required: true },
     food: { type: String },
     img: {
