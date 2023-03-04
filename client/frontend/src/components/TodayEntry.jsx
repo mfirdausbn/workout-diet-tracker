@@ -46,10 +46,10 @@ const TodayEntry = () => {
           feeling: entry.feeling,
           woDetails: entry.woDetails,
           food: entry.food,
-          // img: {
-          //   data: fs.readFileSync("uploads/" + req.file.filename),
-          //   contentType: "image/jpg",
-          // },
+          img: {
+            data: fs.readFileSync("uploads/" + req.file.filename),
+            contentType: "image/jpg",
+          },
         },
 
         {
