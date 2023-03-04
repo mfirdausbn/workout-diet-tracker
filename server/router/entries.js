@@ -43,7 +43,7 @@ router.get("/showall", getAllEntries);
 router.post("/showbydayandweek", getEntryByDayAndWeek);
 
 //READ show entries by week
-router.get("/showbyweek", getEntriesByWeek);
+router.post("/showbyweek", getEntriesByWeek);
 
 // UPDATE entry by ID
 router.patch("/update", upload.single("img"), updateEntry);

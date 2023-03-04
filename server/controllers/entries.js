@@ -14,7 +14,7 @@ const createEntry = async (req, res) => {
       woDetails: req.body.woDetails,
       feeling: req.body.feeling,
       food: req.body.food,
-      img: {
+      entryImg: {
         data: fs.readFileSync("uploads/" + req.file.filename),
         contentType: "image/png",
       },

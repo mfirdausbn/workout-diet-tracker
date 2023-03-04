@@ -31,26 +31,26 @@ const TodayEntry = () => {
     formData.append("workout", entry.workout);
     formData.append("feeling", entry.feeling);
     formData.append("woDetails", entry.woDetails);
-    // formData.append("entryImg", file);
+    formData.append("entryImg", file);
     formData.append("food", entry.food);
 
     // pass the form data object to the server endpoint
     try {
       const response = await axios.put(
         "http://127.0.0.1:5001/entry/create",
-        // formData,
-        {
-          week: entry.week,
-          day: entry.day,
-          workout: entry.workout,
-          feeling: entry.feeling,
-          woDetails: entry.woDetails,
-          food: entry.food,
-          img: {
-            data: fs.readFileSync("uploads/" + req.file.filename),
-            contentType: "image/jpg",
-          },
-        },
+        formData,
+        // {
+        //   week: entry.week,
+        //   day: entry.day,
+        //   workout: entry.workout,
+        //   feeling: entry.feeling,
+        //   woDetails: entry.woDetails,
+        //   food: entry.food,
+        //   img: {
+        //     data: fs.readFileSync("uploads/" + req.file.filename),
+        //     contentType: "image/jpg",
+        //   },
+        // },
 
         {
           headers: {
@@ -62,15 +62,7 @@ const TodayEntry = () => {
         }
       );
       console.log(response);
-      // const url = "http://127.0.0.1:5001/entry/create";
 
-      // const response = await fetch(url, {
-      //   method: "PUT",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // });
-      // return response.json();
     } catch (error) {
       console.error(error.response);
     }
@@ -97,8 +89,8 @@ const TodayEntry = () => {
         </h5>
 
         <form className="flex flex-col gap-4" onSubmit={(e) => createEntry(e)}>
-          <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 w-full group">
+          <div className="grid md:grid-cols-2 md:gap-6">
+            <div className="relative z-0 w-full group">
               <div className="flex">
                 <div className="my-2 block w-32">
                   <Label htmlFor="week" value="Week" />
@@ -131,8 +123,8 @@ const TodayEntry = () => {
             </div>
           </div>
 
-          <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 w-full group">
+          <div className="grid md:grid-cols-2 md:gap-6">
+            <div className="relative z-0 w-full group">
               <div className="flex">
                 <div className="mb-2 block w-32">
                   <Label htmlFor="day" value="Workout" />
@@ -198,8 +190,8 @@ const TodayEntry = () => {
           <div className="flex">
             <div className="w-28">
               <label
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                for="file_input"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="file_input"
               >
                 Upload file
               </label>
@@ -208,7 +200,7 @@ const TodayEntry = () => {
               <input
                 className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-200 dark:border-green-600 dark:placeholder-green-400"
                 id="file_input"
-                name="img"
+                name="entryImg"
                 type="file"
                 onChange={(e) => setFile(e.target.files[0])}
               ></input>
