@@ -80,10 +80,10 @@ const updateEntry = async (req, res) => {
       entry.feeling = req.body.feeling;
       entry.food = req.body.food;
       // FIXME: NEED TO DOUBLE CHECK THIS FROM FRONT END. POSTMAN WORKS
-      // event.img = {
-      //   data: fs.readFileSync("uploads/" + req.file.filename),
-      //   contentType: "image/jpg",
-      // };
+      entry.entryImg = {
+        data: fs.readFileSync("uploads/" + req.file.filename),
+        contentType: "image/jpg",
+      };
 
       entry.points = req.body.points;
     }

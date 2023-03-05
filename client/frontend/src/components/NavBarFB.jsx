@@ -1,7 +1,9 @@
 import React from "react";
 import { Navbar } from "flowbite-react";
 
+
 const NavBarFB = () => {
+  
   return (
     <div className="bg-green-200">
       <Navbar fluid={true} rounded={true}>
@@ -16,6 +18,7 @@ const NavBarFB = () => {
             src="https://flowbite.com/docs/images/logo.svg"
             className="mr-3 h-6 sm:h-9"
             alt="Flowbite Logo"
+            
           /> */}
 
           <div className="flex items-center space-x-4 ml-4">
@@ -32,6 +35,7 @@ const NavBarFB = () => {
                   clipRule="evenodd"
                 ></path>
               </svg>
+              
             </div>
             <div className="font-medium dark:text-white">
               <div>Firdaus Nooraznan</div>
@@ -40,19 +44,19 @@ const NavBarFB = () => {
               </div>
             </div>
           </div>
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white ml-24">
-            Hope your day went great! Lets record your activites for today :)
+          <span className="self-center whitespace-nowrap text-md font-semibold dark:text-white ml-24">
+          The hard days are the best because that's when champions are made, so if you push through, you can push through anything”.
           </span>
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <Navbar.Link href="/navbars" active={true}>
+          <Navbar.Link href="/dashboard" active={true}>
             Home
           </Navbar.Link>
-          <Navbar.Link href="/navbars">Weekly Outlook</Navbar.Link>
-          <Navbar.Link href="/navbars">Monthly Outlook</Navbar.Link>
-          <Navbar.Link href="/navbars">HeatMap</Navbar.Link>
-          <Navbar.Link href="/navbars">Contact</Navbar.Link>
+          <Navbar.Link href="/weeklyPage">Weekly Outlook</Navbar.Link>
+          <Navbar.Link href="/exercises">Exercises</Navbar.Link>
+          <Navbar.Link href="/heatMap">HeatMap</Navbar.Link>
+          <Navbar.Link href="/dashboard">Contact</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </div>

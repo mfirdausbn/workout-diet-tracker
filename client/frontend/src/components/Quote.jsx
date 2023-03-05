@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Button } from "flowbite-react";
+import axios from "axios";
 
 const Quote = () => {
+  const [quoteData, setQuoteData] = useState([]);
+
+  const fetchQuote = async () => {
+    try {
+      const response = await axios.get(
+        "https://api.api-ninjas.com/v1/quotes?category=fitness",
+        {
+          headers: {
+            "X-Api-Key": "ubxDPIvOL8sJhmsCqBM4/A==YoxEBSKr2dOsJ0x8",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data[0]);
+      setQuoteData(response.data[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+  useEffect(() => {
+    fetchQuote();
+  }, []);
+
   return (
     <div>
       <Card>
@@ -9,9 +35,12 @@ const Quote = () => {
           Your quote of the day
         </h5>
         <p className="font-normal text-gray-700 dark:text-gray-400">
-        "The hard days are the best because that's when champions are made, so if you push through, you can push through anything”.
+          {quoteData.quote}
         </p>
-        <Button color="success">
+        <p className="font-normal text-gray-700 dark:text-gray-400">
+          Author: {quoteData.author}
+        </p>
+        <Button onClick={fetchQuote} color="success">
           More Quotes
           <svg
             className="ml-2 -mr-1 h-4 w-4"

@@ -2,53 +2,64 @@ import React, { useState } from "react";
 import { Card, Button, Accordion } from "flowbite-react";
 import ButtonWeek from "./ButtonWeek";
 import { Buffer } from "buffer";
+import UpdateEntry from "./UpdateEntry";
 
 const WeeklyEntries = () => {
   const [week, setWeek] = useState("1");
   const [entries, setEntries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   return (
     <div>
       <div>
         <ButtonWeek week={week} setWeek={setWeek} setEntries={setEntries} />
       </div>
 
-
       <div>
-        <Accordion>
-      {/* mapping */}
-      {entries.map((entry) => {
-        const base64string = Buffer.from(entry.entryImg.data.data).toString(
-          "base64"
-        );
-        return (
-          <Accordion.Panel>
-            <Accordion.Title>Week {week} Day {entry.day}</Accordion.Title>
-              <Accordion.Content>
-                <Card>
-                  <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Day {entry.day} Entry
-                  </h5>
-                  <div className="">
-                    <ul>Workout: {entry.workout}</ul>
-                    <ul>Details: {entry.woDetails}</ul>
-                    <ul>Food: {entry.food}</ul>
-                    <ul>Feeling: {entry.feeling} </ul>
-                    <img src={`data:image/jpg;base64,${base64string}`} />
-                  </div>
-                  <Button color="success">
-                    Update
-                  </Button>
-                </Card>
-              </Accordion.Content>
-          </Accordion.Panel>
-        )
-      })}
-      </Accordion>
+        <Accordion alwaysOpen={true} >
+          {/* mapping */}
+          {entries.map((entry) => {
+            const base64string = Buffer.from(entry.entryImg.data.data).toString(
+              "base64"
+            );
+            return (
+              <Accordion.Panel>
+                <Accordion.Title>
+                  Week {week} Day {entry.day}
+                </Accordion.Title>
+                <Accordion.Content>
+                  <Card>
+                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                      Day {entry.day} Entry
+                    </h5>
+                    <div className="flex">
+                      <div>
+                        <ul>Workout: {entry.workout}</ul>
+                        <ul>Details: {entry.woDetails}</ul>
+                        <ul>Food: {entry.food}</ul>
+                        <ul>Feeling: {entry.feeling} </ul>
+                      </div>
+
+                      <div className="w-48">
+                        <img src={`data:image/jpg;base64,${base64string}`} />
+                      </div>
+                    </div>
+                    <UpdateEntry
+                      day={entry.day}
+                      week={entry.week}
+                      workout={entry.workout}
+                      woDetails={entry.woDetails}
+                      food={entry.food}
+                      feeling={entry.feeling}
+                      id={entry._id}
+                    />
+                  </Card>
+                </Accordion.Content>
+              </Accordion.Panel>
+            );
+          })}
+        </Accordion>
       </div>
-
-
 
       {/* {entries ? (
         <div>

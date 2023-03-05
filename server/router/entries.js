@@ -46,7 +46,7 @@ router.post("/showbydayandweek", getEntryByDayAndWeek);
 router.post("/showbyweek", getEntriesByWeek);
 
 // UPDATE entry by ID
-router.patch("/update", upload.single("img"), updateEntry);
+router.patch("/update", upload.single("entryImg"), updateEntry);
 
 // DELETE entry by ID
 router.delete("/delete", deleteEntry);
