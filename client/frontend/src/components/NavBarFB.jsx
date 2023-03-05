@@ -5,22 +5,9 @@ import { Navbar } from "flowbite-react";
 const NavBarFB = () => {
   
   return (
-    <div className="bg-green-200">
+    <div className="">
       <Navbar fluid={true} rounded={true}>
-        <Navbar.Brand
-        //   as={{
-        //     $$typeof: Symbol(react.forward_ref),
-        //     render: LinkWithRef,
-        //   }}
-        //   to="/navbars"
-        >
-          {/* <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="mr-3 h-6 sm:h-9"
-            alt="Flowbite Logo"
-            
-          /> */}
-
+        <Navbar.Brand>
           <div className="flex items-center space-x-4 ml-4">
             <div className="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
               <svg
@@ -35,24 +22,21 @@ const NavBarFB = () => {
                   clipRule="evenodd"
                 ></path>
               </svg>
-              
             </div>
-            <div className="font-medium dark:text-white">
+            <div className="font-medium ">
               <div>Firdaus Nooraznan</div>
-              <div className="text-sm text-gray-500 dark:text-gray-400">
+              <div className="text-sm text-gray-500">
                 Journey started on 10 March 2023
               </div>
             </div>
           </div>
-          <span className="self-center whitespace-nowrap text-md font-semibold dark:text-white ml-24">
+          <span className="self-center whitespace-nowrap text-md font-semibold  ml-24">
           The hard days are the best because that's when champions are made, so if you push through, you can push through anything”.
           </span>
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <Navbar.Link href="/dashboard" active={true}>
-            Home
-          </Navbar.Link>
+          <Navbar.Link href="/dashboard">Home</Navbar.Link>
           <Navbar.Link href="/weeklyPage">Weekly Outlook</Navbar.Link>
           <Navbar.Link href="/exercises">Exercises</Navbar.Link>
           <Navbar.Link href="/heatMap">HeatMap</Navbar.Link>

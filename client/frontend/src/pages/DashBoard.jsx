@@ -5,7 +5,7 @@ import Quote from "../components/Quote";
 const Dashboard = () => {
   return (
     <div>
-      <div className="flex my-10">
+      <div className="flex justify-evenly my-10">
         <div className="w-1/2 my-4 mx-12">
           <TodayEntry />
         </div>

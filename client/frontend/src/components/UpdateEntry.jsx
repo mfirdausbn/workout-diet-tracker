@@ -59,7 +59,7 @@ const UpdateEntry = (props) => {
 
   return (
     <>
-      <Button onClick={() => setShow(!show)}>Update</Button>
+      <Button color="success" onClick={() => setShow(!show)}>Update</Button>
       <Modal show={show} onClose={() => setShow(!show)}>
         <Modal.Header>Update entry here</Modal.Header>
         <Modal.Body>
@@ -197,10 +197,10 @@ const UpdateEntry = (props) => {
           </Card>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => setShow(!show)}>I accept</Button>
+          {/* <Button onClick={() => setShow(!show)}>I accept</Button>
           <Button color="gray" onClick={() => setShow(!show)}>
             Decline
-          </Button>
+          </Button> */}
         </Modal.Footer>
       </Modal>
     </>
