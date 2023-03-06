@@ -1,10 +1,9 @@
 import React, { useState, useContext } from "react";
 import appContext from "../context/AppContext";
-
+import axios from "axios";
 
 const LoginPage = () => {
-  //   const ctx = useContext(appContext);
-  
+  const ctx = useContext(appContext);
 
   const [login, setLogin] = useState({
     username: "",
@@ -18,25 +17,43 @@ const LoginPage = () => {
     });
   };
 
-  const loginUser = (e) => {
+  const loginUser = async (e) => {
     e.preventDefault();
 
-    fetch("http://127.0.0.1:5001/admin/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(login),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result.access);
-        // ctx.SET_ACCESS_TOKEN(result.access);
-        localStorage.setItem("token", result.access);
-        console.log(localStorage.getItem("token"));
-        //   setIsLoggedIn(true);
-      });
-    
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5001/admin/login",
+        login,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
+      ctx.SET_ACCESS_TOKEN(response.data.access);
+      localStorage.setItem("token", response.data.access);
+      console.log(localStorage.getItem("token"));
+      console.log(ctx.ACCESS_TOKEN);
+    } catch (error) {
+      console.error(error.response.data);
+    }
+
+    // fetch("http://127.0.0.1:5001/admin/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(login),
+    // })
+    //   .then((response) => response.json())
+    //   .then((result) => {
+    //     console.log(result.access);
+    //     ctx.SET_ACCESS_TOKEN(result.access);
+    //     localStorage.setItem("token", result.access);
+    //     console.log(localStorage.getItem("token"));
+    //     console.log(ctx.ACCESS_TOKEN);
+    //   });
   };
 
   const createUser = (e) => {

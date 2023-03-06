@@ -42,45 +42,33 @@ const TodayEntry = () => {
       const response = await axios.put(
         "http://127.0.0.1:5001/entry/create",
         formData,
-        // {
-        //   week: entry.week,
-        //   day: entry.day,
-        //   workout: entry.workout,
-        //   feeling: entry.feeling,
-        //   woDetails: entry.woDetails,
-        //   food: entry.food,
-        //   img: {
-        //     data: fs.readFileSync("uploads/" + req.file.filename),
-        //     contentType: "image/jpg",
-        //   },
-        // },
-
         {
           headers: {
             "Content-Type": "multipart/form-data",
             // "Content-Type": "application/json",
-
-            // Authorization: localStorage.getItem("token"),
+            Authorization: `Bearer ${ctx.ACCESS_TOKEN}`,
           },
         }
       );
-      console.log(response);
+      console.log(response.data);
     } catch (error) {
       console.error(error.response);
     }
 
     // unable to console log the form data directly. need to deconstruct to view as per below
-    for (const pair of formData.entries()) {
-      console.log(pair[0] + ": " + pair[1]);
-    }
-    // setEntry({
-    //   week: "",
-    //   day: "",
-    //   workout: "",
-    //   feeling: "",
-    //   woDetails: "",
-    //   food: "",
-    // });
+    // for (const pair of formData.entries()) {
+    //   console.log(pair[0] + ": " + pair[1]);
+    // }
+    setEntry({
+      week: "",
+      day: "",
+      workout: "",
+      feeling: "",
+      woDetails: "",
+      food: "",
+    });
+
+    //add in alert here to say entry created
   };
 
   return (

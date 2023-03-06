@@ -1,19 +1,22 @@
-import { React, useState } from "react";
+import { React, useContext, useEffect, useState } from "react";
 import { Card, Label, Button, Modal } from "flowbite-react";
 import axios from "axios";
+import appContext from "../context/AppContext";
 
 const UpdateEntry = (props) => {
+  const ctx = useContext(appContext);
+
   const [show, setShow] = useState(false);
 
   const [file, setFile] = useState(null);
   const [update, setUpdate] = useState({
-    week: props.week,
-    day: props.day,
-    workout: props.workout,
-    feeling: props.feeling,
-    woDetails: props.woDetails,
-    food: props.food,
-    id: props.id,
+    // week: props.week,
+    // day: props.day,
+    // workout: props.workout,
+    // feeling: props.feeling,
+    // woDetails: props.woDetails,
+    // food: props.food,
+    // id: props.id,
   });
 
   const handleChange = (e) => {
@@ -23,9 +26,27 @@ const UpdateEntry = (props) => {
     });
   };
 
+  const formUpdate = (e) => {
+    fetchUpdate(e);
+    setShow(!show);
+    props.setEntryUpdated("updated");
+  };
+
+  useEffect(() => {
+    setUpdate({
+      week: props.week,
+      day: props.day,
+      workout: props.workout,
+      feeling: props.feeling,
+      woDetails: props.woDetails,
+      food: props.food,
+      id: props.id,
+    });
+  }, [props.week]);
+
   // Function to update the events
   const fetchUpdate = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     // console.log(1);
     const formData = new FormData(); // create an empty form data object
 
@@ -47,11 +68,11 @@ const UpdateEntry = (props) => {
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            // Authorization: `Bearer ${ctx.ACCESS_TOKEN}`,
+            Authorization: `Bearer ${ctx.ACCESS_TOKEN}`,
           },
         }
       );
-      console.log(response);
+      console.log(response.data);
     } catch (err) {
       console.error(err);
     }
@@ -59,7 +80,14 @@ const UpdateEntry = (props) => {
 
   return (
     <>
-      <Button color="success" onClick={() => setShow(!show)}>Update</Button>
+      <Button
+        color="success"
+        onClick={() => {
+          setShow(!show);
+        }}
+      >
+        Update
+      </Button>
       <Modal show={show} onClose={() => setShow(!show)}>
         <Modal.Header>Update entry here</Modal.Header>
         <Modal.Body>
@@ -70,7 +98,7 @@ const UpdateEntry = (props) => {
 
             <form
               className="flex flex-col gap-4"
-              onSubmit={(e) => fetchUpdate(e)}
+              onSubmit={(e) => formUpdate(e)}
             >
               <div className="grid md:grid-cols-2 md:gap-6">
                 <div className="relative z-0 w-full group">

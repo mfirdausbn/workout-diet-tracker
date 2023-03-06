@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 
 const NavBarFB = () => {
@@ -40,12 +41,14 @@ const NavBarFB = () => {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <Navbar.Link href="/dashboard">Home</Navbar.Link>
-          <Navbar.Link href="/weeklyPage">Weekly Outlook</Navbar.Link>
-          <Navbar.Link href="/exercises">Exercises</Navbar.Link>
-          <Navbar.Link href="/heatMap">HeatMap</Navbar.Link>
-          <Navbar.Link href="/dashboard" onClick={logOut}>Logout</Navbar.Link>
+          <Link to="/dashboard">Home</Link>
+          <Link to="/weeklyPage">Weekly Outlook</Link>
+          <Link to="/exercises">Exercises</Link>
+          <Link to="/heatMap">HeatMap</Link>
+          <Navbar.Link href="/dashboard" onClick={logOut}>Logout</Navbar.Link> 
         </Navbar.Collapse>
+        {/* use <Navbar.Link> because it refreshes the page 
+          using Link will keep the state of the token in the useContext*/}
       </Navbar>
     </div>
   );

@@ -3,17 +3,19 @@ import { Button } from "flowbite-react";
 import axios from "axios";
 import appContext from "../context/AppContext";
 
-const ButtonWeek = ({ week, setWeek, setEntries }) => {
+const WeekButtons = ({ week, setWeek, setEntries }) => {
   const ctx = useContext(appContext);
   const handleClick = (week) => {
     setWeek(week);
-
-    // handleFetchEntries();
     console.log(week);
   };
 
+  
+ 
+
   useEffect(() => {
     handleFetchEntries();
+    
   }, [week]);
 
   const handleFetchEntries = async () => {
@@ -39,6 +41,7 @@ const ButtonWeek = ({ week, setWeek, setEntries }) => {
     } finally {
       // setIsLoading(false);
     }
+    
   };
 
   return (
@@ -46,6 +49,7 @@ const ButtonWeek = ({ week, setWeek, setEntries }) => {
       <div className="flex flex-wrap gap-2">
         <div>
           <Button
+          
             size="xl"
             color="gray"
             outline={true}
@@ -195,4 +199,4 @@ const ButtonWeek = ({ week, setWeek, setEntries }) => {
   );
 };
 
-export default ButtonWeek;
+export default WeekButtons;
