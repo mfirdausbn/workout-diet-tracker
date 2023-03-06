@@ -23,7 +23,6 @@ const createUser = async (req, res) => {
       startWeight: req.body.startWeight,
       startBodyFat: req.body.startBodyFat,
       startMuscleMass: req.body.startMuscleMass,
-
     });
 
     console.log("Created User: " + createUser);
@@ -57,7 +56,7 @@ const login = async (req, res) => {
     };
 
     const access = jwt.sign(payload, process.env.ACCESS_SECRET, {
-      expiresIn: "60m",
+      expiresIn: "30m",
       jwtid: uuidv4(),
     });
 
@@ -100,15 +99,13 @@ const updateUser = async (req, res) => {
       user.height = req.body.height;
       user.startWeight = req.body.startWeight;
       user.startBodyFat = req.body.startBodyFat;
-      user.startMuscleMass = req.body.startMuscleMass;      
+      user.startMuscleMass = req.body.startMuscleMass;
     }
-    const updatedUser= await user.save();
+    const updatedUser = await user.save();
     res.json({ message: "User updated successfully", event: updatedUser });
   } catch (error) {
     console.log(error.message);
   }
 };
 
-
 module.exports = { createUser, login, getUsers, updateUser };
-

@@ -3,6 +3,10 @@ import { Navbar } from "flowbite-react";
 
 
 const NavBarFB = () => {
+
+  const logOut = () => {
+    localStorage.removeItem("token");
+}
   
   return (
     <div className="">
@@ -40,7 +44,7 @@ const NavBarFB = () => {
           <Navbar.Link href="/weeklyPage">Weekly Outlook</Navbar.Link>
           <Navbar.Link href="/exercises">Exercises</Navbar.Link>
           <Navbar.Link href="/heatMap">HeatMap</Navbar.Link>
-          <Navbar.Link href="/dashboard">Contact</Navbar.Link>
+          <Navbar.Link href="/dashboard" onClick={logOut}>Logout</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </div>

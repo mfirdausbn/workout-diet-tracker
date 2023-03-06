@@ -3,7 +3,7 @@ const express = require("express");
 // import router
 const router = express.Router();
 // import middleware if any
-
+const auth = require("../middleware/auth")
 // import functions from controller
 const {
   createEntry,
@@ -43,7 +43,7 @@ router.get("/showall", getAllEntries);
 router.post("/showbydayandweek", getEntryByDayAndWeek);
 
 //READ show entries by week
-router.post("/showbyweek", getEntriesByWeek);
+router.post("/showbyweek",auth, getEntriesByWeek);
 
 // UPDATE entry by ID
 router.patch("/update", upload.single("entryImg"), updateEntry);

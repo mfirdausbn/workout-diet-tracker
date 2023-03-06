@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Card, Label, Button } from "flowbite-react";
 import axios from "axios";
+import appContext from "../context/AppContext";
 
 const TodayEntry = () => {
+  const ctx = useContext(appContext);
+
   const [file, setFile] = useState(null);
 
   const [entry, setEntry] = useState({
@@ -57,12 +60,11 @@ const TodayEntry = () => {
             "Content-Type": "multipart/form-data",
             // "Content-Type": "application/json",
 
-            // Authorization: `Bearer ${ctx.ACCESS_TOKEN}`,
+            // Authorization: localStorage.getItem("token"),
           },
         }
       );
       console.log(response);
-
     } catch (error) {
       console.error(error.response);
     }

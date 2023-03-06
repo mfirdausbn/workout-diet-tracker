@@ -1,8 +1,10 @@
-import { React, useEffect, useState } from "react";
+import { React, useContext, useEffect, useState } from "react";
 import { Button } from "flowbite-react";
 import axios from "axios";
+import appContext from "../context/AppContext";
 
 const ButtonWeek = ({ week, setWeek, setEntries }) => {
+  const ctx = useContext(appContext);
   const handleClick = (week) => {
     setWeek(week);
 
@@ -18,7 +20,10 @@ const ButtonWeek = ({ week, setWeek, setEntries }) => {
     // setIsLoading(true);
     const bodyData = JSON.stringify({ week: week });
     const options = {
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        Authorization: `Bearer ${ctx.ACCESS_TOKEN}`,
+        "Content-Type": "application/json",
+      },
     };
     try {
       const res = await axios.post(
@@ -41,7 +46,6 @@ const ButtonWeek = ({ week, setWeek, setEntries }) => {
       <div className="flex flex-wrap gap-2">
         <div>
           <Button
-            
             size="xl"
             color="gray"
             outline={true}
@@ -116,7 +120,6 @@ const ButtonWeek = ({ week, setWeek, setEntries }) => {
         </div>
         <div>
           <Button
-            size="xl"
             size="xl"
             color="gray"
             outline={true}
