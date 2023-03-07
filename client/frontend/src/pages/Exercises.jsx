@@ -42,7 +42,7 @@ const Exercises = () => {
           >
             <Dropdown.Item
               onClick={() => {
-                fetchExcercises("abdominals");
+                fetchExcercises("abs");
               }}
             >
               Abdominals
@@ -63,7 +63,7 @@ const Exercises = () => {
             </Dropdown.Item>
             <Dropdown.Item
               onClick={() => {
-                fetchExcercises("chest");
+                fetchExcercises("pectorals");
               }}
             >
               Chest
@@ -98,10 +98,10 @@ const Exercises = () => {
             </Dropdown.Item>
             <Dropdown.Item
               onClick={() => {
-                fetchExcercises("middle_back");
+                fetchExcercises("cardiovascular system");
               }}
             >
-              Middle Back
+              Cardiovascular system
             </Dropdown.Item>
           </Dropdown>
         </div>

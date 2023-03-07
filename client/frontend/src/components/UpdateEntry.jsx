@@ -29,7 +29,33 @@ const UpdateEntry = (props) => {
   const formUpdate = (e) => {
     fetchUpdate(e);
     setShow(!show);
-    props.setEntryUpdated("updated");
+    props.setEntryUpdated(!props.entryUpdated);
+  };
+
+  const handleFetchEntries = async () => {
+    // setIsLoading(true);
+    const bodyData = JSON.stringify({ week: props.week });
+    const options = {
+      headers: {
+        Authorization: `Bearer ${ctx.ACCESS_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(
+        "http://127.0.0.1:5001/entry/showbyweek",
+        bodyData,
+        options
+      );
+      props.setEntries(res.data.entries);
+      console.log(res);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      // setIsLoading(false);
+    }
+    
   };
 
   useEffect(() => {
@@ -42,7 +68,11 @@ const UpdateEntry = (props) => {
       food: props.food,
       id: props.id,
     });
-  }, [props.week]);
+
+    handleFetchEntries()
+
+    
+  }, [props.week, props.entryUpdated]);
 
   // Function to update the events
   const fetchUpdate = async (e) => {

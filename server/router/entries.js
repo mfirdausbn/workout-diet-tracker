@@ -3,7 +3,7 @@ const express = require("express");
 // import router
 const router = express.Router();
 // import middleware if any
-const auth = require("../middleware/auth")
+const auth = require("../middleware/auth");
 // import functions from controller
 const {
   createEntry,
@@ -32,9 +32,7 @@ const upload = multer({ storage: storage });
 ////////////////////////////////////////////////////////////////////////
 
 // Create entry
-router.put("/create",
- upload.single("entryImg"), 
- createEntry);
+router.put("/create", auth, upload.single("entryImg"), createEntry);
 
 // READ show all entries
 router.get("/showall", getAllEntries);
@@ -43,10 +41,10 @@ router.get("/showall", getAllEntries);
 router.post("/showbydayandweek", getEntryByDayAndWeek);
 
 //READ show entries by week
-router.post("/showbyweek",auth, getEntriesByWeek);
+router.post("/showbyweek", auth, getEntriesByWeek);
 
 // UPDATE entry by ID
-router.patch("/update", upload.single("entryImg"), updateEntry);
+router.patch("/update", upload.single("entryImg"), auth, updateEntry);
 
 // DELETE entry by ID
 router.delete("/delete", deleteEntry);

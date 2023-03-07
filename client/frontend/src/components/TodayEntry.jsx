@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Card, Label, Button } from "flowbite-react";
 import axios from "axios";
 import appContext from "../context/AppContext";
@@ -70,6 +70,12 @@ const TodayEntry = () => {
 
     //add in alert here to say entry created
   };
+
+  useEffect(() => {
+    ctx.SET_ACCESS_TOKEN(localStorage.getItem("token"));
+    console.log(localStorage.getItem("token"));
+    console.log(ctx.ACCESS_TOKEN);
+  }, []);
 
   return (
     <div>

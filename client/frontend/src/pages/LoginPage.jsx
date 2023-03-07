@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import appContext from "../context/AppContext";
 import axios from "axios";
+import { Button, Card } from "flowbite-react";
 
 const LoginPage = () => {
   const ctx = useContext(appContext);
@@ -82,48 +83,57 @@ const LoginPage = () => {
     <div className="flex justify-center">
       <div className="rounded-lg shadow-lg bg-primary-200 m-10">
         <span className="font-DM text-base font-normal">
-          <div className="p-10">
-            <div className="font-DM text-xl font-normal ml-5 w-44">
-              Enter Login Details
-            </div>
-            <form className="m-4" onSubmit={(e) => loginUser(e)}>
-              <input
-                className="border-2 border-lightgray-200 mx-auto mb-2 rounded-lg p-1"
-                placeholder="username"
-                type="text"
-                onChange={(e) => {
-                  handleChange(e);
-                }}
-                value={login.username}
-                name="username"
-              ></input>
-              <br />
-              <input
-                className="border-2 border-lightgray-200 mx-auto mb-2 rounded-lg p-1"
-                placeholder="password"
-                type="text"
-                onChange={(e) => {
-                  handleChange(e);
-                }}
-                value={login.password}
-                name="password"
-              ></input>
-              <br />
-              <button
-                className="inline-block px-4 mx-2 py-2.5 bg-primary-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-primary-800 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg transition duration-150 ease-in-out"
-                placeholder="submit"
-              >
-                Submit
-              </button>
-              <button
-                className="inline-block px-4 mx-2 py-2.5 bg-primary-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-primary-800 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg transition duration-150 ease-in-out"
+          <Card>
+            <div className="p-10">
+              <div className="font-DM text-xl font-normal ml-5 w-44">
+                Enter Login Details
+              </div>
+              <form className="m-4" onSubmit={(e) => loginUser(e)}>
+                <input
+                  className="border-2 border-lightgray-200 mx-auto mb-2 rounded-lg p-1"
+                  placeholder="username"
+                  type="text"
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
+                  value={login.username}
+                  name="username"
+                ></input>
+                <br />
+                <input
+                  className="border-2 border-lightgray-200 mx-auto mb-2 rounded-lg p-1"
+                  placeholder="password"
+                  type="text"
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
+                  value={login.password}
+                  name="password"
+                ></input>
+                <button></button>
+                <br />
+                <Button
+                  size="md"
+                  color="success"
+                  className="flex justify-center"
+                  placeholder="submit"
+                  onClick={(e) => loginUser(e)}
+                >
+                  Submit
+                </Button>
+              </form>
+              <div className="m-4">
+              <Button
+                size="xs"
+                color="success"
                 placeholder="create"
                 onClick={(e) => createUser(e)}
               >
-                create
-              </button>
-            </form>
-          </div>
+                Create User?
+              </Button>
+              </div>
+            </div>
+          </Card>
         </span>
       </div>
     </div>
