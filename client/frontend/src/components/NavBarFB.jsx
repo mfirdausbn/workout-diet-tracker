@@ -35,9 +35,9 @@ const NavBarFB = () => {
               </div>
             </div>
           </div>
-          <span className="self-center whitespace-nowrap text-md font-semibold  ml-24">
+          {/* <span className="self-center whitespace-nowrap text-md font-semibold  ml-24">
           The hard days are the best because that's when champions are made, so if you push through, you can push through anything”.
-          </span>
+          </span> */}
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>

@@ -74,8 +74,8 @@ const TodayEntry = () => {
   useEffect(() => {
     ctx.SET_ACCESS_TOKEN(localStorage.getItem("token"));
     console.log(localStorage.getItem("token"));
-    console.log(ctx.ACCESS_TOKEN);
-  }, []);
+    console.log("CTX TOKEN", ctx.ACCESS_TOKEN);
+  }, );
 
   return (
     <div>

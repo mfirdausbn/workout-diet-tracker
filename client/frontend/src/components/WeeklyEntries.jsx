@@ -8,7 +8,7 @@ import axios from "axios";
 
 const WeeklyEntries = () => {
   const ctx = useContext(appContext);
-  const [week, setWeek] = useState(1);
+  const [week, setWeek] = useState(null);
   const [entries, setEntries] = useState([]);
 
   const [entryUpdated, setEntryUpdated] = useState(false);
