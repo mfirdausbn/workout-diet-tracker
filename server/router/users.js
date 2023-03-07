@@ -3,16 +3,23 @@ const express = require("express");
 // import router
 const router = express.Router();
 // import middleware if any
-
+const auth = require("../middleware/auth")
+const authAdmin = require("../middleware/authAdmin");
 // import functions from controller
-const { createUser, login, getUsers,updateUser } = require("../controllers/users");
+const {
+  createUser,
+  login,
+  getUsers,
+  updateUser,
+  deleteUser,
+} = require("../controllers/users");
 
 // create routes
 router.put("/create", createUser);
 router.post("/login", login);
-router.get("/allusers", getUsers);
+router.get("/allusers",authAdmin, getUsers);
 router.patch("/update", updateUser);
-
+router.delete("/delete",authAdmin, deleteUser);
 
 // export routes for server.js to access
 module.exports = router;

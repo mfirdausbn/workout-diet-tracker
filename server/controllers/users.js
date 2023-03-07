@@ -19,6 +19,7 @@ const createUser = async (req, res) => {
     const createUser = await Users.create({
       username: req.body.username,
       hash,
+      role: req.body.role,
       height: req.body.height,
       startWeight: req.body.startWeight,
       startBodyFat: req.body.startBodyFat,
@@ -53,6 +54,7 @@ const login = async (req, res) => {
     const payload = {
       id: user._id,
       username: user.username,
+      role: user.role,
     };
 
     const access = jwt.sign(payload, process.env.ACCESS_SECRET, {
@@ -108,4 +110,19 @@ const updateUser = async (req, res) => {
   }
 };
 
-module.exports = { createUser, login, getUsers, updateUser };
+//function to delete user
+const deleteUser = async (req, res) => {
+  try {
+    const user = await Users.find(req.body.user);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    } else {
+      await user.remove();
+      res.json({ message: "User deleted successfully" });
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+module.exports = { createUser, login, getUsers, updateUser, deleteUser };
