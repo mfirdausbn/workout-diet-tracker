@@ -16,9 +16,9 @@ const SlidingLoginPage = () => {
 
   return (
     <>
-    <div className="absolute left-0 top-0 h-16 w-96 bg-white"></div>
+    
     <div className="flex flex-col items-center justify-center h-screen w-screen bg-green-100">
-      <div className="h-4/5 w-4/5 bg-white relative overflow-hidden rounded-lg">
+      <div className="h-2/3 w-4/5 bg-white relative overflow-hidden rounded-lg">
         <div
           id="signin"
           className={`bg-white absolute top-0 left-0 h-full w-1/2 flex justify-center items-center transition-all duration-700 ease-in-out z-20 ${

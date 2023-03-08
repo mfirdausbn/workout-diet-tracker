@@ -13,7 +13,8 @@ const WeeklyPage = () => {
 
   return (
     <div>
-      <WeeklyEntries />
+      {localStorage.getItem("token") && (<WeeklyEntries />) }
+      
     </div>
   );
 };
