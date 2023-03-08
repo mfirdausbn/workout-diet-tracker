@@ -31,11 +31,12 @@ const NavBarFB = () => {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <Link to="/dashboard">Home</Link>
+          <Link to="/home">Home</Link>
           <Link to="/weeklyPage">Weekly Outlook</Link>
           <Link to="/exercises">Exercises</Link>
           <Link to="/results">Results</Link>
-          <Navbar.Link href="/dashboard" onClick={logOut}>Logout</Navbar.Link> 
+          {/* <Link to="/slidingLogin">Login</Link> */}
+          <Navbar.Link href="/home" onClick={logOut}>Logout</Navbar.Link> 
         </Navbar.Collapse>
         {/* use <Navbar.Link> because it refreshes the page 
           using Link will keep the state of the token in the useContext*/}

@@ -94,7 +94,7 @@ const getUsers = async (req, res) => {
 // 4. Function to update user info
 const updateUser = async (req, res) => {
   try {
-    const user = await Users.findById(req.body.id);
+    const user = await Users.findOne({username: req.body.username});
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     } else {
@@ -102,6 +102,9 @@ const updateUser = async (req, res) => {
       user.startWeight = req.body.startWeight;
       user.startBodyFat = req.body.startBodyFat;
       user.startMuscleMass = req.body.startMuscleMass;
+      user.endWeight = req.body.endWeight;
+      user.endBodyFat = req.body.endBodyFat;
+      user.endMuscleMass = req.body.endMuscleMass;
     }
     const updatedUser = await user.save();
     res.json({ message: "User updated successfully", event: updatedUser });

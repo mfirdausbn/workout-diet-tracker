@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Route, Routes, Navigate, Link } from "react-router-dom";
 
-
 import NavBarFB from "./components/NavBarFB";
 
-import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
 import WeeklyPage from "./pages/WeeklyPage";
 import Exercises from "./pages/Exercises";
 import LoginPage from "./pages/LoginPage";
 
 import appContext from "./context/AppContext";
 import Results from "./pages/Results";
+import SlidingLoginPage from "./pages/SlidingLoginPage";
 
 function App() {
   const [ACCESS_TOKEN, SET_ACCESS_TOKEN] = useState("");
@@ -24,14 +24,14 @@ function App() {
         }}
       >
         <NavBarFB />
-
         <Routes>
-          <Route path="/" element={<Navigate replace to="/dashboard" />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Navigate replace to="/home" />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/weeklyPage" element={<WeeklyPage />} />
           <Route path="/exercises" element={<Exercises />} />
           <Route path="/results" element={<Results />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/slidingLogin" element={<SlidingLoginPage />} />
         </Routes>
       </appContext.Provider>
     </>
