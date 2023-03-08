@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 connectDB(process.env.MONGODB_URI);
 
-app.use("/admin", User);
+app.use("/user", User);
 app.use("/entry", Entry)
 
 const PORT = process.env.PORT || 5001;

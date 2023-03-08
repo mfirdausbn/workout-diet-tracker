@@ -23,7 +23,7 @@ const SigninForm = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5001/admin/login",
+        "http://127.0.0.1:5001/user/login",
         login,
         {
           headers: {
@@ -34,7 +34,9 @@ const SigninForm = () => {
       console.log(response.data);
       ctx.SET_ACCESS_TOKEN(response.data.access);
       localStorage.setItem("token", response.data.access);
+      localStorage.setItem("username", login.username);
       console.log(localStorage.getItem("token"));
+      console.log(localStorage.getItem("username"));
       console.log(ctx.ACCESS_TOKEN);
     } catch (error) {
       console.error(error.response.data);

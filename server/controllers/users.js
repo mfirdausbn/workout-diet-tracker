@@ -91,10 +91,21 @@ const getUsers = async (req, res) => {
   }
 };
 
+const getCurrentUserInfo = async (req, res) => {
+  try {
+    const currentUser = await Users.findOne({ username: req.body.username });
+
+    res.json(currentUser);
+  } catch (err) {
+    console.log("GET /admin/allusers", err);
+    res.json({ status: "error", message: "unable to get list of users" });
+  }
+};
+
 // 4. Function to update user info
 const updateUser = async (req, res) => {
   try {
-    const user = await Users.findOne({username: req.body.username});
+    const user = await Users.findOne({ username: req.body.username });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     } else {
@@ -128,4 +139,11 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { createUser, login, getUsers, updateUser, deleteUser };
+module.exports = {
+  createUser,
+  login,
+  getUsers,
+  updateUser,
+  deleteUser,
+  getCurrentUserInfo,
+};

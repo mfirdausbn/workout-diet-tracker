@@ -34,9 +34,7 @@ const WeeklyEntries = () => {
       console.log(res.data);
     } catch (err) {
       console.log(err);
-    } finally {
-      // setIsLoading(false);
-    }
+    } 
     
   };
 
@@ -44,6 +42,7 @@ const WeeklyEntries = () => {
     ctx.SET_ACCESS_TOKEN(localStorage.getItem("token"));
     // console.log(localStorage.getItem("token"));
     console.log("ctx:", ctx.ACCESS_TOKEN);
+    
     handleFetchEntries();
   },[]);
 

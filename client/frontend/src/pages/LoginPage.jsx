@@ -35,8 +35,10 @@ const LoginPage = () => {
       console.log(response.data);
       ctx.SET_ACCESS_TOKEN(response.data.access);
       localStorage.setItem("token", response.data.access);
+      
       console.log(localStorage.getItem("token"));
       console.log(ctx.ACCESS_TOKEN);
+      
     } catch (error) {
       console.error(error.response.data);
     }
@@ -78,6 +80,7 @@ const LoginPage = () => {
       username: "",
       password: "",
     });
+    
   };
 
   

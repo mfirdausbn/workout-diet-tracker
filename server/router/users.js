@@ -12,6 +12,7 @@ const {
   getUsers,
   updateUser,
   deleteUser,
+  getCurrentUserInfo,
 } = require("../controllers/users");
 
 // create routes
@@ -20,6 +21,7 @@ router.post("/login", login);
 router.get("/allusers", getUsers);
 router.patch("/update", updateUser);
 router.delete("/delete",authAdmin, deleteUser);
+router.post("/currentUser", getCurrentUserInfo)
 
 // export routes for server.js to access
 module.exports = router;

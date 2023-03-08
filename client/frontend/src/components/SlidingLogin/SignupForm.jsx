@@ -21,7 +21,7 @@ const SignupForm = () => {
     e.preventDefault();
     console.log("created user");
 
-    fetch("http://127.0.0.1:5001/admin/create", {
+    fetch("http://127.0.0.1:5001/user/create", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
