@@ -4,10 +4,11 @@ import appContext from "../context/AppContext";
 import axios from "axios";
 import { Buffer } from "buffer";
 
+
 const Results = () => {
   const ctx = useContext(appContext);
-  const [firstEntry, setFirstEntry] = useState({});
-  const [lastEntry, setLastEntry] = useState([]);
+  const [firstEntry, setFirstEntry] = useState(null);
+  const [lastEntry, setLastEntry] = useState(null);
 
   const fetchFirstEntry = async () => {
     // setIsLoading(true);
@@ -81,8 +82,10 @@ const Results = () => {
 
   return (
     <>
-      <div>
+      <div className="flex flex-col items-center justify-center ">
+      
         <Button
+        color="success"
           onClick={() => {
             fetchResults();
           }}
@@ -106,7 +109,7 @@ const Results = () => {
                 </div>
 
                 <div className="w-48">
-                  {/* <img src={`data:image/jpg;base64,${base64string}`} /> */}
+                  <img src={`data:image/jpg;base64,${Buffer.from(firstEntry.entryImg.data.data).toString("base64")}`} />
                 </div>
               </div>
             </Card>
@@ -114,6 +117,7 @@ const Results = () => {
         </div>
         <div>
           {lastEntry && (
+            <div>
             <Card>
               <h5 className="flex justify-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Final Entry
@@ -127,13 +131,18 @@ const Results = () => {
                 </div>
 
                 <div className="w-48">
-                  {/* <img src={`data:image/jpg;base64,${base64string}`} /> */}
+                <img src={`data:image/jpg;base64,${Buffer.from(firstEntry.entryImg.data.data).toString("base64")}`} />
                 </div>
               </div>
+              
             </Card>
+            <Card><div>Congratulations on completing your 12 week journey</div></Card>
+            </div>
           )}
         </div>
+       
       </div>
+      
     </>
   );
 };

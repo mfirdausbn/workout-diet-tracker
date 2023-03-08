@@ -18,7 +18,8 @@ const Exercises = () => {
       const response = await axios.get(fullUrl, {
         headers: {
           // "X-Api-Key": "ubxDPIvOL8sJhmsCqBM4/A==YoxEBSKr2dOsJ0x8",
-          "X-RapidAPI-Key": "1099a8e149mshdbfec4c00e83bc7p1a48f4jsn4215ab71c789",
+          "X-RapidAPI-Key":
+            "1099a8e149mshdbfec4c00e83bc7p1a48f4jsn4215ab71c789",
           "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
           "Content-Type": "application/json",
         },
@@ -129,19 +130,20 @@ const Exercises = () => {
           </div>
         </div>
         <div className="h-screen">
-          <div className="h-5/6 mx-36">
+          <div className="h-1/2 mx-36">
             <Carousel slideInterval={1000000}>
               {exercises.map((exercise, index) => {
                 return (
-                  <div className="">
-                    <Card>
-                      <div className="h-full p-10 grid grid-cols-3">
-                        <div>{exercise.name}</div>
-                        <div>Target Muscle: {exercise.target}</div>
-                        <div>Equipment: {exercise.equipment}</div>
-
-                        <div className="col-start-2">
-                        <img src={exercise.gifUrl}/>
+                  <div className="text-md font-semibold">
+                    <Card className="mx-48">
+                      <div className="flex justify-around ">
+                        <div className="grid grid-rows-3 grid-cols-2">
+                          <div>Exercise: </div><div className="text-lg "> {exercise.name}</div>
+                          <div>Target Muscle: </div><div className="text-lg ">{exercise.target}</div>
+                          <div>Equipment: </div><div className="text-lg ">{exercise.equipment}</div>
+                        </div>
+                        <div className="">
+                          <img src={exercise.gifUrl} />
                         </div>
                       </div>
                     </Card>

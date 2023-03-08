@@ -84,7 +84,7 @@ const LoginPage = () => {
       <div className="rounded-lg shadow-lg bg-primary-200 m-10">
         <span className="font-DM text-base font-normal">
           <Card>
-            <div className="p-10">
+            <div className="px-10 pt-10">
               <div className="font-DM text-xl font-normal ml-5 w-44">
                 Enter Login Details
               </div>
@@ -122,7 +122,7 @@ const LoginPage = () => {
                   Submit
                 </Button>
               </form>
-              <div className="m-4">
+              <div className="ml-4 mt-10">
               <Button
                 size="xs"
                 color="success"
