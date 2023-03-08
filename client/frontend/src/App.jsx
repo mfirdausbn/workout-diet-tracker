@@ -5,12 +5,12 @@ import { Route, Routes, Navigate, Link } from "react-router-dom";
 import NavBarFB from "./components/NavBarFB";
 
 import Dashboard from "./pages/Dashboard";
-import HeatMap from "./pages/HeatMap";
 import WeeklyPage from "./pages/WeeklyPage";
 import Exercises from "./pages/Exercises";
 import LoginPage from "./pages/LoginPage";
 
 import appContext from "./context/AppContext";
+import Results from "./pages/Results";
 
 function App() {
   const [ACCESS_TOKEN, SET_ACCESS_TOKEN] = useState("");
@@ -30,7 +30,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/weeklyPage" element={<WeeklyPage />} />
           <Route path="/exercises" element={<Exercises />} />
-          <Route path="/heatMap" element={<HeatMap />} />
+          <Route path="/results" element={<Results />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>
       </appContext.Provider>

@@ -1,12 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Card, Label, Button } from "flowbite-react";
+import { Card, Label, Button, Toast } from "flowbite-react";
 import axios from "axios";
 import appContext from "../context/AppContext";
+import DbLogo from "../assets/dbLogo.png";
 
 const TodayEntry = () => {
   const ctx = useContext(appContext);
 
   const [file, setFile] = useState(null);
+  const [toast, setToast] = useState(false);
 
   const [entry, setEntry] = useState({
     week: "",
@@ -22,6 +24,12 @@ const TodayEntry = () => {
       ...entry,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+    }
   };
 
   const createEntry = async (e) => {
@@ -51,6 +59,7 @@ const TodayEntry = () => {
         }
       );
       console.log(response.data);
+      setToast(true);
     } catch (error) {
       console.error(error.response);
     }
@@ -75,15 +84,33 @@ const TodayEntry = () => {
     ctx.SET_ACCESS_TOKEN(localStorage.getItem("token"));
     console.log(localStorage.getItem("token"));
     console.log("CTX TOKEN", ctx.ACCESS_TOKEN);
-  }, );
+  }, []);
 
   return (
     <div>
       <Card>
-        <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Today's Entry
-        </h5>
-
+        <div className="flex justify-between">
+          <div>
+            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              Today's Entry
+            </h5>
+          </div>
+          <div>
+            {toast && (
+              <div>
+                <Toast>
+                  <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-500 dark:bg-blue-800 dark:text-blue-200">
+                    <img src={DbLogo} className="h-5 w-5" />
+                  </div>
+                  <div className="ml-3 text-sm font-normal">
+                    Entry successfully created
+                  </div>
+                  <Toast.Toggle />
+                </Toast>
+              </div>
+            )}
+          </div>
+        </div>
         <form className="flex flex-col gap-4" onSubmit={(e) => createEntry(e)}>
           <div className="grid md:grid-cols-2 md:gap-6">
             <div className="relative z-0 w-full group">
@@ -99,6 +126,7 @@ const TodayEntry = () => {
                   name="week"
                   value={entry.week}
                   onChange={(e) => handleChange(e)}
+                  onKeyDown={(e) => handleKeyDown(e)}
                 />
               </div>
             </div>
@@ -115,6 +143,7 @@ const TodayEntry = () => {
                 name="day"
                 value={entry.day}
                 onChange={(e) => handleChange(e)}
+                onKeyDown={(e) => handleKeyDown(e)}
               />
             </div>
           </div>
@@ -133,6 +162,7 @@ const TodayEntry = () => {
                   name="workout"
                   value={entry.workout}
                   onChange={(e) => handleChange(e)}
+                  onKeyDown={(e) => handleKeyDown(e)}
                 />
               </div>
             </div>
@@ -149,6 +179,7 @@ const TodayEntry = () => {
                 name="feeling"
                 value={entry.feeling}
                 onChange={(e) => handleChange(e)}
+                onKeyDown={(e) => handleKeyDown(e)}
               />
             </div>
           </div>
@@ -165,6 +196,7 @@ const TodayEntry = () => {
               name="woDetails"
               value={entry.woDetails}
               onChange={(e) => handleChange(e)}
+              onKeyDown={(e) => handleKeyDown(e)}
             />
           </div>
 
