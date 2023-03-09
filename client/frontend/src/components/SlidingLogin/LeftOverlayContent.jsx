@@ -4,7 +4,7 @@ const LeftOverlayContent = ({ isAnimated, setIsAnimated }) => {
     return (
       <div className="p-8 text-center">
         <h1 className="text-6xl font-bold text-white mb-4">
-          Already have an account ?
+          Have an account ?
         </h1>
   
         <h5 className="text-xl text-white">Sign in with your email & password</h5>

@@ -3,6 +3,7 @@ import SigninForm from "../components/SlidingLogin/SigninForm";
 import SignupForm from "../components/SlidingLogin/SignupForm";
 import LeftOverlayContent from "../components/SlidingLogin/LeftOverlayContent";
 import RightOverlayContent from "../components/SlidingLogin/RightOverlayContent";
+// import backgroundgif from ".././assets/background.gif"
 
 
 const SlidingLoginPage = () => {
@@ -10,15 +11,16 @@ const SlidingLoginPage = () => {
   const [isAnimated, setIsAnimated] = useState(false);
 
 
-  const overlayBg =
-    "bg-gradient-to-r from-green-800 via-green-600 to-green-800";
+  const overlayBg = 
+    "bg-gradient-to-t from-green-500 to-green-700";
+    
 
 
   return (
     <>
     
-    <div className="flex flex-col items-center justify-center h-screen w-screen bg-green-100">
-      <div className="h-2/3 w-4/5 bg-white relative overflow-hidden rounded-lg">
+    <div className="flex flex-col items-center justify-center h-screen w-screen bg-green-100 ">
+      <div className="h-2/3 w-5/6 bg-white relative overflow-hidden rounded-lg mb-16">
         <div
           id="signin"
           className={`bg-white absolute top-0 left-0 h-full w-1/2 flex justify-center items-center transition-all duration-700 ease-in-out z-20 ${
@@ -48,9 +50,10 @@ const SlidingLoginPage = () => {
           }`}
         >
           <div
+          
             id="overlay"
             className={`${overlayBg} relative -left-full h-full w-[200%] transform  transition-transform duration-700 ease-in-out ${
-              isAnimated ? "translate-x-1/2" : "translate-x-0"
+              isAnimated ? "translate-x-1/2" : "translate-x-0" 
             }`}
           >
             <div

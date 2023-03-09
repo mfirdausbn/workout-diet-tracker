@@ -18,7 +18,7 @@ const {
 // create routes
 router.put("/create", createUser);
 router.post("/login", login);
-router.get("/allusers", getUsers);
+router.get("/allusers",authAdmin, getUsers);
 router.patch("/update", updateUser);
 router.delete("/delete",authAdmin, deleteUser);
 router.post("/currentUser", getCurrentUserInfo)

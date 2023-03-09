@@ -10,6 +10,7 @@ const Results = () => {
   const [lastEntry, setLastEntry] = useState(null);
   const [userInfo, setUserInfo] = useState();
   const [show, setShow] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
   const [update, setUpdate] = useState({
     username: localStorage.getItem("username"),
 
@@ -148,21 +149,32 @@ const Results = () => {
     setShow(!show);
     fetchUserInfo();
     fetchLastEntry();
+    setIsUpdated(!isUpdated);
   };
+
+  useEffect(() => {
+    fetchUserInfo();
+  }, [isUpdated]);
 
   return (
     <>
-    {localStorage.getItem("token") && (<div className="flex flex-col items-center justify-center mt-4">
-        <Button
-          color="success"
-          onClick={() => {
-            fetchResults();
-          }}
-        >
-          Display your first entry
-        </Button>
-      </div>)}
-      
+      {localStorage.getItem("token") && (
+        <div className="flex flex-col items-center justify-center mt-4">
+          <Button
+            size="xl"
+            color="gray"
+            outline={true}
+            gradientDuoTone="tealToLime"
+            pill={true}
+            onClick={() => {
+              fetchResults();
+            }}
+          >
+            Display your first entry
+          </Button>
+        </div>
+      )}
+
       <div>
         <div>
           {firstEntry && userInfo && (
@@ -196,7 +208,11 @@ const Results = () => {
                 </Card>
                 <div className="flex flex-col items-center justify-center mt-4 ">
                   <Button
-                    color="success"
+                    size="xl"
+                    color="gray"
+                    outline={true}
+                    gradientDuoTone="tealToLime"
+                    pill={true}
                     onClick={() => {
                       setShow(!show);
                     }}

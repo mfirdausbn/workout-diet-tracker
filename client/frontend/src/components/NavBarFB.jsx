@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Navbar } from "flowbite-react";
 import { Link } from "react-router-dom";
 import pirAvatar from "../assets/pirAvatar.png";
+import { NavbarLink } from "flowbite-react/lib/esm/components/Navbar/NavbarLink";
 
 const NavBarFB = () => {
   const logOut = () => {
@@ -38,9 +39,9 @@ const NavBarFB = () => {
           <Link to="/exercises">Exercises</Link>
           <Link to="/results">Results</Link>
 
-          <Link to="/home" onClick={logOut}>
+          <NavbarLink href="/home" onClick={logOut}>
             Logout
-          </Link>
+          </NavbarLink>
         </Navbar.Collapse>
         {/* use <Navbar.Link> because it refreshes the page 
           using Link will keep the state of the token in the useContext*/}

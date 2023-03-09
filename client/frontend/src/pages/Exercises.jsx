@@ -33,82 +33,85 @@ const Exercises = () => {
 
   return (
     <div>
-      <div>
-        <div className=" mt-10 flex justify-center">
-          <Dropdown
-            label="Choose the muscle group you want to work on"
-            placement="right-start"
-            color="success"
-            size="xl"
-          >
-            <Dropdown.Item
-              onClick={() => {
-                fetchExcercises("abs");
-              }}
+      {localStorage.getItem("token") && (
+        <div>
+          <div className=" mt-10 flex justify-center">
+            <Dropdown
+              label="Choose the muscle group you want to work on"
+              // placement="left-start"
+              size="xl"
+              color="gray"
+              outline={true}
+              gradientDuoTone="tealToLime"
             >
-              Abdominals
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => {
-                fetchExcercises("biceps");
-              }}
-            >
-              Biceps
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => {
-                fetchExcercises("calves");
-              }}
-            >
-              Calves
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => {
-                fetchExcercises("pectorals");
-              }}
-            >
-              Chest
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => {
-                fetchExcercises("forearms");
-              }}
-            >
-              Forearms
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => {
-                fetchExcercises("lats");
-              }}
-            >
-              Lats
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => {
-                fetchExcercises("traps");
-              }}
-            >
-              Traps
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => {
-                fetchExcercises("triceps");
-              }}
-            >
-              Triceps
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() => {
-                fetchExcercises("cardiovascular system");
-              }}
-            >
-              Cardiovascular system
-            </Dropdown.Item>
-          </Dropdown>
-        </div>
-        <div className="flex justify-center">
-          <div className="w-3/4">
-            {/* <Accordion alwaysOpen={true}>
+              <Dropdown.Item
+                onClick={() => {
+                  fetchExcercises("abs");
+                }}
+              >
+                Abdominals
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  fetchExcercises("biceps");
+                }}
+              >
+                Biceps
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  fetchExcercises("calves");
+                }}
+              >
+                Calves
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  fetchExcercises("pectorals");
+                }}
+              >
+                Chest
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  fetchExcercises("forearms");
+                }}
+              >
+                Forearms
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  fetchExcercises("lats");
+                }}
+              >
+                Lats
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  fetchExcercises("traps");
+                }}
+              >
+                Traps
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  fetchExcercises("triceps");
+                }}
+              >
+                Triceps
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  fetchExcercises("cardiovascular system");
+                }}
+              >
+                Cardiovascular system
+              </Dropdown.Item>
+            </Dropdown>
+          </div>
+          <div className="flex justify-center">
+            <div className="w-3/4">
+              {/* <Accordion alwaysOpen={true}>
             {exercises.map((exercise, index) => {
               return (
                 <Accordion.Panel>
@@ -127,33 +130,37 @@ const Exercises = () => {
               );
             })}
           </Accordion> */}
+            </div>
+          </div>
+          <div className="h-screen">
+            <div className="h-1/2 mx-36">
+              <Carousel slideInterval={1000000}>
+                {exercises.map((exercise, index) => {
+                  return (
+                    <div className="text-md font-semibold">
+                      <Card className="mx-48">
+                        <div className="flex justify-around ">
+                          <div className="grid grid-rows-3 grid-cols-2">
+                            <div>Exercise: </div>
+                            <div className="text-lg "> {exercise.name}</div>
+                            <div>Target Muscle: </div>
+                            <div className="text-lg ">{exercise.target}</div>
+                            <div>Equipment: </div>
+                            <div className="text-lg ">{exercise.equipment}</div>
+                          </div>
+                          <div className="">
+                            <img src={exercise.gifUrl} />
+                          </div>
+                        </div>
+                      </Card>
+                    </div>
+                  );
+                })}
+              </Carousel>
+            </div>
           </div>
         </div>
-        <div className="h-screen">
-          <div className="h-1/2 mx-36">
-            <Carousel slideInterval={1000000}>
-              {exercises.map((exercise, index) => {
-                return (
-                  <div className="text-md font-semibold">
-                    <Card className="mx-48">
-                      <div className="flex justify-around ">
-                        <div className="grid grid-rows-3 grid-cols-2">
-                          <div>Exercise: </div><div className="text-lg "> {exercise.name}</div>
-                          <div>Target Muscle: </div><div className="text-lg ">{exercise.target}</div>
-                          <div>Equipment: </div><div className="text-lg ">{exercise.equipment}</div>
-                        </div>
-                        <div className="">
-                          <img src={exercise.gifUrl} />
-                        </div>
-                      </div>
-                    </Card>
-                  </div>
-                );
-              })}
-            </Carousel>
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

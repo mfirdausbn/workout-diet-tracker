@@ -67,7 +67,7 @@ const login = async (req, res) => {
       jwtid: uuidv4(),
     });
 
-    const response = { access, refresh };
+    const response = { access, refresh, payload };
     res.json(response);
   } catch (err) {
     console.log("POST /admin/login", err);

@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import WeeklyPage from "./pages/WeeklyPage";
 import Exercises from "./pages/Exercises";
 import LoginPage from "./pages/LoginPage";
+import AdminPage from "./pages/AdminPage";
 
 import appContext from "./context/AppContext";
 import Results from "./pages/Results";
@@ -32,6 +33,7 @@ function App() {
           <Route path="/results" element={<Results />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/slidingLogin" element={<SlidingLoginPage />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </appContext.Provider>
     </>
