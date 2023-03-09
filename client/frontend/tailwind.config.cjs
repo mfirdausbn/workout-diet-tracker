@@ -22,6 +22,7 @@ module.exports = {
       animation: {
         show: "show 0.7s",
       },
+
     },
   },
   variants: {

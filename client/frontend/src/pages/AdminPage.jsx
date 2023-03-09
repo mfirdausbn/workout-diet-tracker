@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Card, Accordion, Button } from "flowbite-react";
 import appContext from "../context/AppContext";
 import axios from "axios";
+import pirAvatar from ".././assets/pirAvatar.png";
 
 const AdminPage = () => {
   const ctx = useContext(appContext);
@@ -30,12 +31,12 @@ const AdminPage = () => {
   };
 
   useEffect(() => {
-    
     ctx.SET_ACCESS_TOKEN(localStorage.getItem("token"));
   }, [isFetched]);
 
   return (
     <div>
+     
       <div className="flex justify-center my-4">
         <Button
           size="xl"

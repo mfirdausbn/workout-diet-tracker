@@ -11,11 +11,13 @@ const SlidingLoginPage = () => {
   const [isAnimated, setIsAnimated] = useState(false);
 
 
-  const overlayBg = 
-    "bg-gradient-to-t from-green-500 to-green-700";
-    
-
-
+  const overlayBg = "bg-[url('https://external-preview.redd.it/fwoT0rQ-YfxhzcYHoTb2d_mcpLlnWIyIVCjjOuVR7uM.png?width=320&crop=smart&format=pjpg&auto=webp&v=enabled&s=cebbb748774d30e800794d8436493a0afa40b491')]";
+    // "bg-gradient-to-t from-green-500 to-green-700";
+    // 'https://giphy.com/gifs/sticker-mountain-lake-3o7aD5R4aIdLwOP0Os'
+    // 'https://iili.io/HXqQY42.md.png' this works
+    // 'https://giphy.com/gifs/wallpaper-OK5LK5zLFfdm'
+    // 'https://preview.redd.it/0bb6dqsiab451.gif?format=mp4&v=enabled&s=8c881c6acc59ff4361bd269f21d847a940ba0062'
+   // 'https://external-preview.redd.it/fwoT0rQ-YfxhzcYHoTb2d_mcpLlnWIyIVCjjOuVR7uM.png?width=320&crop=smart&format=pjpg&auto=webp&v=enabled&s=cebbb748774d30e800794d8436493a0afa40b491'
   return (
     <>
     
