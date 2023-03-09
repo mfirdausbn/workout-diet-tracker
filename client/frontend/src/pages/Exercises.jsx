@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Card, Button, Accordion, Carousel } from "flowbite-react";
+import React, { useState } from "react";
+import { Card, Carousel } from "flowbite-react";
 import axios from "axios";
 import { Dropdown } from "flowbite-react";
-import LoginPage from "./LoginPage";
-import appContext from "../context/AppContext";
+
 
 const Exercises = () => {
   const [exercises, setExercises] = useState([]);
-
+  
   const fetchExcercises = async (muscleType) => {
     const baseUrl = "https://exercisedb.p.rapidapi.com/exercises/target/";
     // "https://api.api-ninjas.com/v1/exercises?muscle="
@@ -30,6 +29,8 @@ const Exercises = () => {
       console.log(error);
     }
   };
+
+  //move the API keys into a .env file
 
   return (
     <div>

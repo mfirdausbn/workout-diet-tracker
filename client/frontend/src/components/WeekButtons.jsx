@@ -1,4 +1,4 @@
-import { React, useContext, useEffect, useState } from "react";
+import { React, useContext, useEffect } from "react";
 import { Button } from "flowbite-react";
 import axios from "axios";
 import appContext from "../context/AppContext";
@@ -10,16 +10,11 @@ const WeekButtons = ({ week, setWeek, setEntries }) => {
     console.log(week);
   };
 
-  
- 
-
   useEffect(() => {
     handleFetchEntries();
-    
   }, [week]);
 
   const handleFetchEntries = async () => {
-    // setIsLoading(true);
     const bodyData = JSON.stringify({ week: week });
     const options = {
       headers: {
@@ -38,18 +33,16 @@ const WeekButtons = ({ week, setWeek, setEntries }) => {
       console.log(res.data);
     } catch (err) {
       console.log(err);
-    } finally {
-      // setIsLoading(false);
     }
-    
   };
+
+  //should have mapped out the buttons instead..
 
   return (
     <div>
       <div className="flex flex-wrap gap-2">
         <div>
           <Button
-          
             size="xl"
             color="gray"
             outline={true}

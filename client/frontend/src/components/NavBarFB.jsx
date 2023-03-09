@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar } from "flowbite-react";
 import { Link } from "react-router-dom";
 import pirAvatar from "../assets/pirAvatar.png";

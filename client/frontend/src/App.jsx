@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Routes, Navigate, Link } from "react-router-dom";
+import { Route, Routes, Navigate} from "react-router-dom";
 
 import NavBarFB from "./components/NavBarFB";
 
@@ -8,10 +8,11 @@ import WeeklyPage from "./pages/WeeklyPage";
 import Exercises from "./pages/Exercises";
 import LoginPage from "./pages/LoginPage";
 import AdminPage from "./pages/AdminPage";
-
-import appContext from "./context/AppContext";
 import Results from "./pages/Results";
 import SlidingLoginPage from "./pages/SlidingLoginPage";
+
+import appContext from "./context/AppContext";
+
 
 function App() {
   const [ACCESS_TOKEN, SET_ACCESS_TOKEN] = useState("");

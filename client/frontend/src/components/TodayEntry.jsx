@@ -9,7 +9,6 @@ const TodayEntry = () => {
 
   const [file, setFile] = useState(null);
   const [toast, setToast] = useState(false);
-
   const [entry, setEntry] = useState({
     week: "",
     day: "",
@@ -26,6 +25,7 @@ const TodayEntry = () => {
     });
   };
 
+  // prevent form from submitting on enter
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
       e.preventDefault();
@@ -59,7 +59,7 @@ const TodayEntry = () => {
         }
       );
       console.log(response.data);
-      setToast(true);
+      setToast(true); //toast to show entry is created successfully
     } catch (error) {
       console.error(error.response);
     }
@@ -76,8 +76,6 @@ const TodayEntry = () => {
       woDetails: "",
       food: "",
     });
-
-    //add in alert here to say entry created
   };
 
   useEffect(() => {

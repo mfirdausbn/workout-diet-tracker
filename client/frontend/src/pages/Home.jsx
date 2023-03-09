@@ -1,19 +1,15 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import TodayEntry from "../components/TodayEntry";
 import Quote from "../components/Quote";
-import appContext from "../context/AppContext";
-import LoginPage from "./LoginPage";
 import SlidingLoginPage from "./SlidingLoginPage";
 
 const Dashboard = () => {
-  const ctx = useContext(appContext);
 
   return (
     <>
       {/* NO ACCESS TOKEN, DISPLAY LOGIN PAGE */}
       {
       !localStorage.getItem("token")
-      // !ctx.ACCESS_TOKEN 
        && (
         <SlidingLoginPage/>
       )}

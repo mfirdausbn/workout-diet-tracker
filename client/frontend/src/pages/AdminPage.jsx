@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Card, Accordion, Button } from "flowbite-react";
 import appContext from "../context/AppContext";
 import axios from "axios";
-import pirAvatar from ".././assets/pirAvatar.png";
+
 
 const AdminPage = () => {
   const ctx = useContext(appContext);

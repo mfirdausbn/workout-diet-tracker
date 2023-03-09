@@ -7,17 +7,8 @@ const UpdateEntry = (props) => {
   const ctx = useContext(appContext);
 
   const [show, setShow] = useState(false);
-
   const [file, setFile] = useState(null);
-  const [update, setUpdate] = useState({
-    // week: props.week,
-    // day: props.day,
-    // workout: props.workout,
-    // feeling: props.feeling,
-    // woDetails: props.woDetails,
-    // food: props.food,
-    // id: props.id,
-  });
+  const [update, setUpdate] = useState({});
 
   const handleChange = (e) => {
     setUpdate({
@@ -33,7 +24,6 @@ const UpdateEntry = (props) => {
   };
 
   const handleFetchEntries = async () => {
-    // setIsLoading(true);
     const bodyData = JSON.stringify({ week: props.week });
     const options = {
       headers: {
@@ -52,10 +42,7 @@ const UpdateEntry = (props) => {
       console.log(res.data);
     } catch (err) {
       console.log(err);
-    } finally {
-      // setIsLoading(false);
-    }
-    
+    }   
   };
 
   useEffect(() => {
@@ -68,8 +55,9 @@ const UpdateEntry = (props) => {
       food: props.food,
       id: props.id,
     });
+    //setUpdate in useEffect to ensure propped down properly into the update Modal 
 
-    handleFetchEntries()
+    handleFetchEntries();
 
     
   }, [props.week, props.entryUpdated]);
@@ -255,10 +243,6 @@ const UpdateEntry = (props) => {
           </Card>
         </Modal.Body>
         <Modal.Footer>
-          {/* <Button onClick={() => setShow(!show)}>I accept</Button>
-          <Button color="gray" onClick={() => setShow(!show)}>
-            Decline
-          </Button> */}
         </Modal.Footer>
       </Modal>
     </>

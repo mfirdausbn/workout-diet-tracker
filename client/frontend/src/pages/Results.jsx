@@ -13,7 +13,6 @@ const Results = () => {
   const [isUpdated, setIsUpdated] = useState(false);
   const [update, setUpdate] = useState({
     username: localStorage.getItem("username"),
-
     endWeight: "",
     endBodyFat: "",
     endMuscleMass: "",
@@ -31,7 +30,6 @@ const Results = () => {
   };
 
   const fetchFirstEntry = async () => {
-    // setIsLoading(true);
     const bodyData = JSON.stringify({
       week: 1,
       day: 1,
@@ -42,25 +40,22 @@ const Results = () => {
         "Content-Type": "application/json",
       },
     };
+
     try {
       const res = await axios.post(
         "http://127.0.0.1:5001/entry/showbydayandweek",
         bodyData,
         options
       );
-
       setFirstEntry(res.data.entry[0]);
-
       console.log("First entry:", res.data.entry[0]);
+
     } catch (err) {
       console.log(err);
-    } finally {
-      // setIsLoading(false);
     }
   };
 
   const fetchLastEntry = async () => {
-    // setIsLoading(true);
     const bodyData = JSON.stringify({
       week: 12,
       day: 7,
@@ -77,14 +72,10 @@ const Results = () => {
         bodyData,
         options
       );
-
       setLastEntry(res.data.entry[0]);
-
       console.log("Last Entry:", res.data.entry[0]);
     } catch (err) {
       console.log(err);
-    } finally {
-      // setIsLoading(false);
     }
   };
 

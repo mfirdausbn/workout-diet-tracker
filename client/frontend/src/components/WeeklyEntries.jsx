@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Card, Button, Accordion, Carousel } from "flowbite-react";
+import { Card, Accordion} from "flowbite-react";
 import ButtonWeek from "./WeekButtons";
 import { Buffer } from "buffer";
 import UpdateEntry from "./UpdateEntry";
@@ -15,7 +15,6 @@ const WeeklyEntries = () => {
   // //this is to send down to UpdateEntry component to allow this component to rerender when entry is being updated
 
   const handleFetchEntries = async () => {
-    // setIsLoading(true);
     const bodyData = JSON.stringify({ week: week });
     const options = {
       headers: {
@@ -40,9 +39,7 @@ const WeeklyEntries = () => {
 
   useEffect(() => {
     ctx.SET_ACCESS_TOKEN(localStorage.getItem("token"));
-    // console.log(localStorage.getItem("token"));
     console.log("ctx:", ctx.ACCESS_TOKEN);
-    
     handleFetchEntries();
   },[]);
 
