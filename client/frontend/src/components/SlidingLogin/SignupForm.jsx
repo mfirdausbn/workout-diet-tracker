@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import appContext from "../../context/AppContext";
 import axios from "axios";
-import { Button, Card } from "flowbite-react";
+import { Button, Toast } from "flowbite-react";
 const SignupForm = () => {
   const ctx = useContext(appContext);
-
+  const [toast, setToast] = useState(false);
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -40,8 +40,8 @@ const SignupForm = () => {
       startBodyFat: "",
       startMuscleMass: "",
     });
+    setToast(true);
   };
-
 
   return (
     <div className="selection:bg-green-500 selection:text-white">
@@ -49,6 +49,33 @@ const SignupForm = () => {
         <div className="p-8 flex-1">
           <div className="mx-auto overflow-hidden">
             <div className="p-8">
+              <div>
+                {toast && (
+                  <div>
+                    <Toast>
+                        <div class="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                          <svg
+                            class="absolute w-12 h-12 text-gray-400 -left-1"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </div>
+                      
+                      <div className="ml-3 text-sm font-normal">
+                        User successfully created
+                      </div>
+                      <Toast.Toggle />
+                    </Toast>
+                  </div>
+                )}
+              </div>
               <h1 className="text-5xl font-bold text-green-600">
                 Create account
               </h1>
@@ -111,13 +138,13 @@ const SignupForm = () => {
                 <button></button>
                 <br />
                 <Button
-                size="md"
-                color="success"
-                placeholder="create"
-                onClick={(e) => createUser(e)}
-              >
-                Create User
-              </Button>
+                  size="md"
+                  color="success"
+                  placeholder="create"
+                  onClick={(e) => createUser(e)}
+                >
+                  Create User
+                </Button>
               </form>
             </div>
           </div>
