@@ -85,7 +85,7 @@ const SigninForm = () => {
                 <input
                   className="border-2 border-lightgray-200 mx-auto mb-2 rounded-lg p-1"
                   placeholder="password"
-                  type="text"
+                  type="password"
                   onChange={(e) => {
                     handleChange(e);
                   }}
