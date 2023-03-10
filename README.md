@@ -1,7 +1,7 @@
 # workout-diet-tracker
 
-
 # Description
+
 This web application is designed to help users track their workouts and diets. Users can input data on what they ate, how long they exercised, and other activities to help them monitor their progress. The app includes a user-friendly dashboard that displays information in an easy-to-read format, allowing users to see their progress over time.
 
 ## Technologies
@@ -17,6 +17,7 @@ This project uses the following technologies:
 - **N**ode.js: a JavaScript runtime environment for server-side development
 
 ## Installation
+
 To install the application, follow these steps:
 
 1. Clone the repository to your local machine.
@@ -25,6 +26,7 @@ To install the application, follow these steps:
 4. Run npm run dev to start the application.
 
 ## Usage
+
 Once the application is running, you can navigate to http://localhost:5173 in your web browser to access the application. From there, you can create an account and start tracking your workouts and diets.
 
 ## Frontend Approach
@@ -33,16 +35,6 @@ Once the application is running, you can navigate to http://localhost:5173 in yo
 
 - **Dynamic forms**: Forms that adjust or update based on user input or validation errors, providing instant feedback and guidance to the user
 - **Interactive animations**: Animations for tabs, accordions and buttons that respond to user clicking
-
-### _React & Tailwind_
-
-We then used React and Tailwind, which complement each other in building those dynamic features.
-
-- **Reusable components**: Using React's component-based architecture, we built reusable UI components, which made our code modular and maintainable. We used Tailwind's utility classes to style these components in a flexible and consistent way, making it easier to achieve a consistent look and feel across our entire application.
-
-- **Rapid development**: Because Tailwind's utility classes provide a large set of pre-defined styles, we could quickly build UI components without having to write custom CSS. This saved us time and allowed us to focus on building functionality rather than tweaking CSS styles.
-
-- **Responsive design**: Tailwind's responsive utility classes, combined with React's ability to conditionally render components based on state, makes it easy to create responsive and adaptive UIs that work across the entire web applications. For example, we used a single Form component that shows different labels on different pages. We also used a single PictureCard component that renders either a horizontal or vertical layout depending on the state on the page.
 
 ### FrontEnd (React)
 
@@ -70,9 +62,10 @@ const base64string = Buffer.from(obj.img.data.data).toString("base64");
 
 4. We then finally pass this variable to our `img` tag as it's `src` property to be rendered. Here, it is specified that the image is of Base64 encoding, and the string is passed.
 
-### BackEnd 
+### BackEnd
 
 ## JWT authentication middleware to protect admin endpoints
+
 1. Created two separate auth middleware, (auth & authAdmin)
 2. JWT Authentication added to the CRUD routes to protect different endpoints
 3. User with role Admin will have extra access such as to view users and also delete the users
@@ -84,7 +77,7 @@ const base64string = Buffer.from(obj.img.data.data).toString("base64");
 
 - **Testing**: Testing the integration between the front-end and back-end was complex and time-consuming. Often, things did not display as expected when testing the HTTP requests.
 
-- **Planning and execution**: Schema models and certain components and props have to be changed along the way as I realised there were 
+- **Planning and execution**: Schema models and certain components and props have to be changed along the way as I realised there were
   more things to add or adjust. Better planning can be made for future projects.
 
 ## Unsolved Problems & Further Work
@@ -92,7 +85,6 @@ const base64string = Buffer.from(obj.img.data.data).toString("base64");
 - Update entries model to include user and user's id to retrieve only entries specific to a certain user
 
 - Optimise the use of react router dom and include nesting of routes to improve the layout of pages
-  
 - Include a refresh controller and route for the jwt token
 
 - Add on more features to the website such as a nutritional breakdown of the food and possibly a workout program creator for
@@ -100,8 +92,8 @@ const base64string = Buffer.from(obj.img.data.data).toString("base64");
 
 - Add on a feature for a separate user like a trainer to view their client's logs and review them.
 
-
 ## Contributing
+
 If you would like to contribute to this project, please follow these steps:
 
 Fork the repository.
@@ -110,6 +102,6 @@ Make your changes and commit them: git commit -m "my changes"
 Push your changes to your fork: git push origin my-feature-branch
 Submit a pull request.
 
-
 ## Contact
+
 If you have any questions or concerns about this project, you can contact me at [mfirdausbn@gmail.com].
