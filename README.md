@@ -25,7 +25,7 @@ To install the application, follow these steps:
 4. Run npm run dev to start the application.
 
 ## Usage
-Once the application is running, you can navigate to http://localhost:5001 in your web browser to access the application. From there, you can create an account and start tracking your workouts and diets.
+Once the application is running, you can navigate to http://localhost:5173 in your web browser to access the application. From there, you can create an account and start tracking your workouts and diets.
 
 ## Frontend Approach
 
@@ -59,8 +59,6 @@ We use React to store states and user input to fetch data from a database:
 The binary data retrieved from the database needs to be read in order to display the images correctly in the browser.
 
 1. For the components that will be rendering the images retrieved, we need to import `Buffer` which helps in the handling and operations of binary data.
-
-![importing buffer](/images/buffer.png)
 
 2. In the fetch function, we keep the results headers to be `"Content-Type": "application/json"`. This data is then stored into a state. The image object will later be manipulated.
 
