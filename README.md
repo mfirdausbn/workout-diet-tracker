@@ -4,6 +4,28 @@
 
 This web application is designed to help users track their workouts and diets. Users can input data on what they ate, how long they exercised, and other activities to help them monitor their progress. The app includes a user-friendly dashboard that displays information in an easy-to-read format, allowing users to see their progress over time.
 
+## Screenshots of App
+
+### Login Page
+
+![LoginPage](./client/frontend/public/LoginPage.png)
+
+### Create entry and quote api
+
+![CreateEntry](./client/frontend/public/CreateEntry.png)
+
+### Weekly outlook
+
+![WeeklyOutlookPage](./client/frontend/public/WeeklyOutlook.png)
+
+### Exercises api
+
+![ExercisesPage](./client/frontend/public/Exercises.png)
+
+### Results page
+
+![ResultsPage](./client/frontend/public/Results.png)
+
 ## Technologies
 
 This project uses the following technologies:
@@ -24,6 +46,7 @@ To install the application, follow these steps:
 2. Navigate to the root directory of the project.
 3. Run npm install to install the necessary dependencies.
 4. Run npm run dev to start the application.
+5. Run two terminals client directory and server directory
 
 ## Usage
 
@@ -31,10 +54,10 @@ Once the application is running, you can navigate to http://localhost:5173 in yo
 
 ## Frontend Approach
 
-### _Identify Dynamic UI_
+### Design and functionality of the application
 
-- **Dynamic forms**: Forms that adjust or update based on user input or validation errors, providing instant feedback and guidance to the user
-- **Interactive animations**: Animations for tabs, accordions and buttons that respond to user clicking
+- **Interactive animations**: Animations for tabs, accordions, carousels and buttons that respond to user clicking
+- **Functionality**: Start off with simple logging of workout and diet, calculate the difference in weight, bodyfat and muscles mass at the end of 12 weeks. Added some external APIs such as quotes and exercises to aid user in their logging.
 
 ### FrontEnd (React)
 
@@ -85,6 +108,7 @@ const base64string = Buffer.from(obj.img.data.data).toString("base64");
 - Update entries model to include user and user's id to retrieve only entries specific to a certain user
 
 - Optimise the use of react router dom and include nesting of routes to improve the layout of pages
+
 - Include a refresh controller and route for the jwt token
 
 - Add on more features to the website such as a nutritional breakdown of the food and possibly a workout program creator for
