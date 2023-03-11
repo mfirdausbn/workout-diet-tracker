@@ -24,7 +24,7 @@ This web application is designed to help users track their workouts and diets. U
 
 ### Results page
 
-![ResultsPage](./client/frontend/public/Results.png)
+![ResultsPage](./client/frontend/public/ResultsPage.png)
 
 ## Technologies
 
